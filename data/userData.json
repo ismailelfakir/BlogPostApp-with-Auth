@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "ismail elfakir",
+      "email": "ismail.elfakir@gmail.com",
+      "password": "password123"
+    },
+    {
+      "id": 2,
+      "name": "ismail Smith",
+      "email": "ismail.smith@gmail.com",
+      "password": "password123"
+    },
+    {
+      "id": 3,
+      "name": "ismail jaiden",
+      "email": "ismail.jaiden@gmail.com",
+      "password": "password123"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+<%- include("partials/header.ejs") %>
+<%- include("partials/nav-bar.ejs") %>
+
+<!-- profile Section -->
+<section class="w-full md:w-2/3 flex flex-col items-center px-3" id="section-add-blog">
+    <form action="/blog/<%= blog.id %>/update" method="post" enctype="multipart/form-data" class="w-full bg-gray-100 p-12 rounded-lg shadow-lg mb-6">
+        <div class="mb-4">
+          <label for="title" class="block text-gray-700 font-bold mb-2">Title:</label>
+          <input type="text" id="title" name="title" value="<%= blog.title %>" required class="w-full p-2 border rounded-lg focus:ring focus:ring-blue-400">
+        </div>
+    
+        <div class="mb-4">
+          <label for="content" class="block text-gray-700 font-bold mb-2">Content:</label>
+          <textarea id="content" name="content" value="content" rows="5" required class="w-full p-2 border rounded-lg focus:ring focus:ring-blue-400"><%= blog.content %></textarea>
+        </div>
+    
+        <div class="mb-4">
+          <label for="tags" class="block text-gray-700 font-bold mb-2">Tags (comma-separated):</label>
+          <input type="text" id="tags" name="tags" value="<%= blog.tags.join(', ') %>" required class="w-full p-2 border rounded-lg focus:ring focus:ring-blue-400">
+        </div>
+    
+        <div class="mb-4">
+          <label for="category" class="block text-gray-700 font-bold mb-2">Category:</label>
+          <select id="category" name="category" required class="w-full p-2 border rounded-lg focus:ring focus:ring-blue-400">
+            <option value="" disabled>Select a category</option>
+            <option value="Technology" <%= blog.category === 'Technology' ? 'selected' : '' %>>Technology</option>
+            <option value="Sports" <%= blog.category === 'Sports' ? 'selected' : '' %>>Sports</option>
+            <option value="Travel" <%= blog.category === 'Travel' ? 'selected' : '' %>>Travel</option>
+            <option value="Food" <%= blog.category === 'Food' ? 'selected' : '' %>>Food</option>
+            <option value="Culture" <%= blog.category === 'Culture' ? 'selected' : '' %>>Culture</option>
+          </select>
+        </div>
+    
+        <div class="mb-4">
+            <label for="image" class="block text-gray-700 font-bold mb-2">Current Image:</label>
+            <img src="<%= blog.imagePath %>" alt="Current Image" width="100">
+        </div>
+      
+        <div class="mb-4">
+            <label for="image" class="block text-gray-700 font-bold mb-2">Select a new image:</label>
+            <input type="file" id="image" name="image" accept="image/*" class="p-2">
+        </div>
+    
+        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105">Update Blog</button>
+    </form>
+    
+  <a href="/" class="text-blue-700 hover:underline">Go back to all blogs</a>
+</section>
+
+
+
+
+<!-- Sidebar Section -->
+<aside class="w-full md:w-1/3 flex flex-col items-center px-3">
+  <% if (userBlogs.length === 0) { %>
+    <p class="text-gray-600">You haven't added any blogs yet. <a href="#section-add-blog">Start adding blogs</a>.</p>
+  <% } else { %>
+  <% userBlogs.forEach(blog => { %>
+    <article class="flex w-full flex-col items-start justify-between bg-gray-100 p-2 rounded-lg shadow-lg mb-2">
+      <div class="flex items-center gap-x-4 text-xs">
+        <time datetime="<%= blog.createdAt %>" class="text-gray-500"><%= blog.createdAt.toDateString() %></time>
+        <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"><%= blog.category %></a>
+      </div>
+      <div class="group relative">
+        <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+          <a href="#">
+            <span class="absolute inset-0"></span>
+            <%= blog.title %>
+          </a>
+        </h3>
+        <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600"><%= blog.content %></p>
+      </div>
+      <% if(isAuth) { %>
+      <div class="flex justify-end mt-4">
+          <button onclick="window.location.href='/blog/<%= blog.id %>/delete'" class="px-4 py-1 bg-red-500 text-white rounded-lg hover:bg-red-700 transition duration-300 ease-in-out transform hover:scale-105 flex-1 mr-2">Delete</button>
+          <button onclick="window.location.href='/update-blog/<%= blog.id %>'" class="px-4 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 flex-1">Update</button>
+      </div>
+      <% } %>
+    </article>
+  <% }); %>
+  <% } %>
+</aside>
+<!------------------------ java script ------------->
+<script>
+
+</script>
+<%- include("partials/footer.ejs") %>

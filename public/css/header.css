@@ -1,0 +1,42 @@
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    margin-right: 30px; /* Add margin between user info and navigation */
+  }
+  
+  .user-info img {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .user-info .username {
+    font-weight: bold;
+    font-size: 16px;
+    color: aliceblue;
+  }
+  
+  nav ul.navbar1 {
+    margin-right: 20px; /* Add margin between navbar items */
+    display: flex;
+  }
+  
+  nav ul.navbar1 li {
+    margin: 10px 20px; 
+  }
+  
+  nav ul.navbar1 li a,
+  nav ul.navbar li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    transition: 0.3s;
+  }
+  
+  nav ul.navbar1 li a:hover {
+    transform: scale(1.7);
+    text-decoration: underline;
+  }

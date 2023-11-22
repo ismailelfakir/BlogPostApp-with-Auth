@@ -1,0 +1,111 @@
+<%- include("partials/header.ejs") %>
+<%- include("partials/nav-bar.ejs") %>
+
+  <!-- Posts Section -->
+<section class="w-full md:w-2/3 flex flex-col items-center px-3">
+
+<article class="flex flex-col shadow my-4">
+  <!-- Article Image -->
+  <a href="#" class="hover:opacity-75">
+      <img src="../<%= blog.image %>" alt="<%= blog.title %>">
+  </a>
+  <div class="bg-white flex flex-col justify-start p-6">
+      <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4"><%= blog.category %></a>
+      <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4"><%= blog.title %></a>
+      <p href="#" class="text-sm pb-8">
+          By <a href="#" class="font-semibold hover:text-gray-800"><%= blog.author %></a>, Published on <%= new Date(blog.createdAt).toLocaleDateString() %>
+      </p>
+      <p class="pb-3"><%= blog.content %></p>
+  </div>
+  <!-- Display comments if available -->
+  <div class="blog-likes d-flex">
+    <form action="/blog/<%= blog.id %>/like" method="post">
+      <button type="submit" name="likesBtn" value="<%= blog._id %>" class="bg-transparent border-0 text-white">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+    </form>
+    <span><%= blog.likes %></span>
+  </div>
+  <!-- Display comments if available -->
+<div class="comments-section mt-8 p-4 bg-gray-100 rounded">
+  <h3 class="text-lg font-bold mb-2">Comments:</h3>
+  <ul>
+    <% if (blog.comments && blog.comments.length > 0) { %>
+      <% blog.comments.forEach(comment => { %>
+        <li class="mb-2">
+          <strong><%= comment.user %>:</strong> <%= comment.text %>
+        </li>
+      <% }); %>
+    <% } else { %>
+      <li class="text-gray-500">No comments yet.</li>
+    <% } %>
+  </ul>
+</div>
+
+<!-- Form for adding a new comment -->
+<form action="/blog/<%= blog.id %>/comments" method="post" class="mt-4 p-4 bg-gray-100 rounded">
+  <label for="comment" class="block font-bold mb-2">Add a Comment:</label>
+  <textarea id="comment" name="comment" rows="3" class="w-full p-2 border rounded" required></textarea>
+  <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Submit</button>
+</form>
+
+
+  <a href="/">Go back to all blogs</a>
+</article>
+
+<div class="w-full flex flex-col text-center md:text-left md:flex-row shadow bg-white mt-10 mb-10 p-6">
+  <div class="w-full md:w-1/5 flex justify-center md:justify-start pb-4">
+      <img src="../<%= user.userImage %>" class="rounded-full shadow h-32 w-32">
+  </div>
+  <div class="flex-1 flex flex-col justify-center md:justify-start">
+      <p class="font-semibold text-2xl"><%= user.username %></p>
+      <p class="pt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel neque non libero suscipit suscipit eu eu urna.</p>
+      <div class="flex items-center justify-center md:justify-start text-2xl no-underline text-blue-800 pt-4">
+          <a class="" href="#">
+              <i class="fab fa-facebook"></i>
+          </a>
+          <a class="pl-4" href="#">
+              <i class="fab fa-instagram"></i>
+          </a>
+          <a class="pl-4" href="#">
+              <i class="fab fa-twitter"></i>
+          </a>
+          <a class="pl-4" href="#">
+              <i class="fab fa-linkedin"></i>
+          </a>
+      </div>
+  </div>
+</div>
+</section>
+<!-- Sidebar Section -->
+<aside class="w-full md:w-1/3 flex flex-col items-center px-3">
+
+  <div class="w-full bg-white shadow flex flex-col my-4 p-6">
+      <p class="text-xl font-semibold pb-5">About Us</p>
+      <p class="pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis est eu odio sagittis tristique. Vestibulum ut finibus leo. In hac habitasse platea dictumst.</p>
+      <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
+          Get to know us
+      </a>
+  </div>
+
+  <div class="w-full bg-white shadow flex flex-col my-4 p-6">
+      <p class="text-xl font-semibold pb-5">Instagram</p>
+      <div class="grid grid-cols-3 gap-3">
+          <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=1">
+          <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=2">
+          <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=3">
+          <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=4">
+          <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=5">
+          <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=6">
+          <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=7">
+          <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=8">
+          <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=9">
+      </div>
+      <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6">
+          <i class="fab fa-instagram mr-2"></i> Follow @dgrzyb
+      </a>
+  </div>
+
+</aside>
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,32 @@
+{
+    "blogs": [
+      {
+        "id": 1,
+        "title": "Adventures in Nature",
+        "author": "John Doe",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
+        "tags": ["nature", "travel", "adventure"],
+        "published_date": "2023-09-30",
+        "imageUrl": "./img/product.png"
+      },
+      {
+        "id": 2,
+        "title": "The Tech Guru's Corner",
+        "author": "Jane Smith",
+        "content": "Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.",
+        "tags": ["technology", "gadgets", "programming"],
+        "published_date": "2023-09-28",
+        "imageUrl": "./img/product.png"
+      },
+      {
+        "id": 3,
+        "title": "Culinary Delights",
+        "author": "Michael Johnson",
+        "content": "Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+        "tags": ["food", "cooking", "recipes"],
+        "published_date": "2023-09-25",
+        "imageUrl": "./img/product.png"
+      }
+    ]
+  }
+  

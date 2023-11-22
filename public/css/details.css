@@ -1,0 +1,32 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+  h1 {
+    color: #333;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  .blog-content {
+    margin-top: 20px;
+  }
+  .blog-content p {
+    margin-bottom: 10px;
+  }
+  .tags {
+    margin-top: 10px;
+  }
+  .tags strong {
+    display: block;
+    margin-bottom: 5px;
+  }
+  a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #007BFF;
+    text-decoration: none;
+  }
